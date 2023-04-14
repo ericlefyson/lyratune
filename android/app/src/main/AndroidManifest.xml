@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.key_finder">
    <application
-        android:label="key_finder"
+        android:label="KeyFinder"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
