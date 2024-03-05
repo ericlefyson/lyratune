@@ -7,4 +7,5 @@ class AppColors {
   static const Color mediumPrimary = Color.fromRGBO(10, 117, 152, 1);
   static const Color lightPrimary = Color.fromRGBO(14, 255, 249, 1);
   static const Color lightWhite = Color.fromRGBO(237, 240, 240, 1);
+  static const Color textBody = Color.fromRGBO(112, 110, 122, 1);
 }
