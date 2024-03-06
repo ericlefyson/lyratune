@@ -34,7 +34,6 @@ class CustomButtom extends StatelessWidget {
           label: Text(name),
           onPressed: () {},
           style: TextButton.styleFrom(
-            primary: color,
             textStyle: TextStyle(
               fontSize: size,
               fontWeight: FontWeight.bold,
