@@ -1,33 +1,26 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:key_finder/screens/finder/key_finder.dart';
+import 'package:key_finder/routes/app_router.dart';
 import 'package:key_finder/utils/styles.dart';
 
+final _appRouter = AppRouter(
+
+    // webViewGuard: WebViewGuard(),
+    );
 void main() {
-  runApp(const MyApp());
+  runApp(const LyraTune());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class LyraTune extends StatelessWidget {
+  const LyraTune({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
+      title: 'LyraTune',
+      theme: AppTheme.theme,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -54,59 +47,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(
-          vertical: 3,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.05),
-              spreadRadius: 0,
-              blurRadius: 15,
-            ),
-          ],
-        ),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          elevation: 0,
-          showUnselectedLabels: true,
-          backgroundColor: Colors.transparent,
-          unselectedItemColor: AppColors.textBody,
-          selectedItemColor: AppColors.primary,
-          items: <BottomNavigationBarItem>[
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'KeyFinder',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.music_note_outlined),
-              label: 'Cifralizador',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              label: 'Configurações',
-            ),
-          ],
-          currentIndex: 0,
-          onTap: (index) {},
-        ),
-      ),
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: IndexedStack(
-          index: 0,
-          children: [KeyFinder()],
-        )
-      ),
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
     );
   }
 }
