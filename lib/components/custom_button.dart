@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:key_finder/utils/styles.dart';
+import 'package:lyratune/utils/styles.dart';
 
 enum ButtonType { standard, outline, text }
 
