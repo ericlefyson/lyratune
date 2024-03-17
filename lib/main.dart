@@ -12,22 +12,10 @@ void main() {
   runApp(const LyraTune());
 }
 
-class LyraTune extends StatelessWidget {
-  const LyraTune({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'LyraTune',
-      theme: AppTheme.theme,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class LyraTune extends StatefulWidget {
+  const LyraTune({
+    Key? key,
+  }) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -38,16 +26,15 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
-
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<LyraTune> createState() => _LyraTuneState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LyraTuneState extends State<LyraTune> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: AppTheme.theme,
       routerConfig: _appRouter.config(),
     );
   }
