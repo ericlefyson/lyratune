@@ -12,7 +12,6 @@ class KeyFinderScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Key Finder'),
       ),
-      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +52,6 @@ class KeyFinderScreen extends StatelessWidget {
                   );
                 }
               },
-              
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 136, 71, 227),
                 shape: RoundedRectangleBorder(
@@ -61,11 +59,9 @@ class KeyFinderScreen extends StatelessWidget {
                 ),
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               ),
-              
               child: Row(
-                
                 mainAxisSize: MainAxisSize.min,
-                children: [  
+                children: [
                   Text(
                     'Importar Arquivo',
                     style: TextStyle(color: Colors.white),
@@ -91,10 +87,9 @@ class KeyFinderScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     CircleIconButton(
-                      iconSize: 30, 
+                      iconSize: 30,
                       backgroundColor: Colors.grey,
                       icon: Icons.stop,
-                      
                       onPressed: () {
                         // Lógica para parar gravação e exibir opção de salvar áudio
                         showDialog(
@@ -129,7 +124,7 @@ class KeyFinderScreen extends StatelessWidget {
                       onPressed: () {
                         // Lógica para tocar/pausar áudio
                       },
-                      
+
                       iconSize: 55, // Altera a cor do botão de play para branco
                     ),
                     CircleIconButton(
@@ -138,8 +133,7 @@ class KeyFinderScreen extends StatelessWidget {
                       onPressed: () {
                         // Lógica para iniciar gravação
                       },
-                      
-                      iconSize: 30, 
+                      iconSize: 30,
                     ),
                   ],
                 ),
