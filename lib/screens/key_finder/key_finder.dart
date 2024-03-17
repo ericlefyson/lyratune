@@ -7,21 +7,10 @@ class KeyFinderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [
-              Colors.blue,
-              Colors.red,
-            ],
-          ),
-        ),
-        child: const Center(
-          child: Text('Hello, World!'),
-        ),
+    return const Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Center(
+        child: Text('Hello, World!'),
       ),
     );
   }

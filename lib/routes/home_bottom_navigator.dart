@@ -9,18 +9,30 @@ class HomeBottomNavigatorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
-      routes: const [
-        app_router.HomeRoute(),
-        app_router.KeyFinderRoute(),
-        app_router.CypherRoute(),
-        app_router.ChordLibraryRoute(),
-      ],
-      bottomNavigationBuilder: (_, tabsRouter) {
-        return BottomNavigator(
-          tabsRouter: tabsRouter,
-        );
-      },
+    final theme = Theme.of(context);
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.topCenter,
+          stops: const [0.0, 0.95],
+          colors: [theme.colorScheme.primary, theme.colorScheme.tertiary],
+        ),
+      ),
+      child: AutoTabsScaffold(
+        backgroundColor: Colors.transparent,
+        routes: const [
+          app_router.HomeRoute(),
+          app_router.KeyFinderRoute(),
+          app_router.CypherRoute(),
+          app_router.ChordLibraryRoute(),
+        ],
+        bottomNavigationBuilder: (_, tabsRouter) {
+          return BottomNavigator(
+            tabsRouter: tabsRouter,
+          );
+        },
+      ),
     );
   }
 }
