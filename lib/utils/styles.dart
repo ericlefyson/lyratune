@@ -33,20 +33,25 @@ class AppBorderRadius {
   static const double radius16 = 16.0;
 }
 
-class AppImages {}
+class AppImages {
+  // General Images
+  static const String moon = 'assets/images/moon.png';
+}
 
 class AppIcons {}
 
 class AppTheme {
   static final base = ThemeData.dark();
-  static final theme =
-      ThemeData(fontFamily: _defaultFontFamily, colorScheme: _colorTheme, textTheme: _textTheme);
+  static final theme = ThemeData(
+      fontFamily: _defaultFontFamily,
+      colorScheme: _colorTheme,
+      textTheme: _textTheme);
   static const _defaultFontFamily = 'Anybody';
 
   static final ColorScheme _colorTheme = base.colorScheme.copyWith(
     primary: AppColors.primary,
     secondary: AppColors.secondary,
-    tertiary: AppColors.veryLightPurple,
+    tertiary: AppColors.darkestBlue,
     shadow: AppColors.darkBlue.withOpacity(0.75),
     outline: AppColors.darkBlue.withOpacity(0.30),
     surface: AppColors.darkBlue.withOpacity(0.10),
@@ -100,9 +105,6 @@ class AppTheme {
       fontWeight: FontWeight.w600,
       color: AppColors.secondary,
     ),
-    labelSmall: const TextStyle(
-      fontSize: 10.0,
-      color: AppColors.white
-    ),
+    labelSmall: const TextStyle(fontSize: 10.0, color: AppColors.white),
   );
 }
