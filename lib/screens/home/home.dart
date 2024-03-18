@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:lyratune/screens/home/audio_list.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -7,12 +8,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Theme.of(context);
     return const Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Center(
-        child: Text('Hello, World!'),
-      ),
-    );
+        backgroundColor: Colors.transparent,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [AudioList()],
+        ));
   }
 }
