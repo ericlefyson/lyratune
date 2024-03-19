@@ -18,6 +18,8 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(),
@@ -114,7 +116,7 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
                       iconSize: 55, // Altera a cor do botão de play para branco
                     ),
                     CircleIconButton(
-                      backgroundColor: Colors.red,
+                      backgroundColor: theme.colorScheme.error,
                       icon: Icons.circle,
                       onPressed: () {
                         // Lógica para iniciar gravação
