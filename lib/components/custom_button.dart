@@ -45,9 +45,11 @@ class CustomButtom extends StatelessWidget {
           icon: icon != null ? Icon(icon) : Container(),
           label: Text(name),
           onPressed: () {},
-          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color),
-          minimumSize: MaterialStateProperty.all(Size(size,size)),
-          padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(color),
+            minimumSize: MaterialStateProperty.all(Size(size, size)),
+            padding: MaterialStateProperty.all(
+                EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
           ),
         );
     }
