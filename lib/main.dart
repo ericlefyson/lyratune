@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:lyratune/routes/app_router.dart';
 import 'package:lyratune/utils/styles.dart';
 
-
 final _appRouter = AppRouter(
 
     // webViewGuard: WebViewGuard(),
@@ -13,35 +12,20 @@ void main() {
   runApp(const LyraTune());
 }
 
-class LyraTune extends StatelessWidget {
-  const LyraTune({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
+class LyraTune extends StatefulWidget {
+  const LyraTune({
+    Key? key,
+  }) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      
-      title: 'LyraTune',
-      theme: AppTheme.theme,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  State<LyraTune> createState() => _LyraTuneState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _LyraTuneState extends State<LyraTune> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.theme,
       routerConfig: _appRouter.config(),
     );
   }

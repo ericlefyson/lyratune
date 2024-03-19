@@ -1,13 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:lyratune/components/circle_icon_button.dart';
 
+@RoutePage()
 class KeyFinderScreen extends StatefulWidget {
   const KeyFinderScreen({Key? key}) : super(key: key);
 
   @override
-  _KeyFinderScreenState createState() => _KeyFinderScreenState();
+  State<KeyFinderScreen> createState() => _KeyFinderScreenState();
 }
 
 class _KeyFinderScreenState extends State<KeyFinderScreen> {
@@ -17,27 +19,26 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Key Finder'),
-      ),
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('This is the Route Page'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
                 await _pickFile();
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 136, 71, 227),
+                backgroundColor: const Color.fromARGB(255, 136, 71, 227),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               ),
-              child: Row(
+              child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
@@ -52,20 +53,20 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             if (filePath != null)
               Text(
                 'Arquivo Selecionado: $filePath',
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
               ),
             SizedBox(
               width: 250,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  color: Color.fromARGB(255, 46, 46, 46),
+                  color: const Color.fromARGB(255, 46, 46, 46),
                 ),
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -79,22 +80,22 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Salvar Áudio?'),
-                              content: Text('Deseja salvar este áudio?'),
+                              title: const Text('Salvar Áudio?'),
+                              content: const Text('Deseja salvar este áudio?'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
                                     // Lógica para salvar áudio
                                     Navigator.pop(context);
                                   },
-                                  child: Text('Sim'),
+                                  child: const Text('Sim'),
                                 ),
                                 TextButton(
                                   onPressed: () {
                                     // Lógica para descartar áudio
                                     Navigator.pop(context);
                                   },
-                                  child: Text('Não'),
+                                  child: const Text('Não'),
                                 ),
                               ],
                             );
@@ -133,9 +134,11 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
   Future<void> _pickFile() async {
     var storagePermissionStatus = await Permission.storage.status;
     if (storagePermissionStatus.isGranted) {
-      String? pickedFilePath = await FilePicker.platform.pickFiles(
-        type: FileType.audio,
-      ).then((value) => value?.files.single.path);
+      String? pickedFilePath = await FilePicker.platform
+          .pickFiles(
+            type: FileType.audio,
+          )
+          .then((value) => value?.files.single.path);
 
       if (pickedFilePath != null) {
         setState(() {
