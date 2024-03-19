@@ -3,8 +3,16 @@ import 'package:file_picker/file_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:lyratune/components/circle_icon_button.dart';
 
-class KeyFinderScreen extends StatelessWidget {
+class KeyFinderScreen extends StatefulWidget {
   const KeyFinderScreen({Key? key}) : super(key: key);
+
+  @override
+  _KeyFinderScreenState createState() => _KeyFinderScreenState();
+}
+
+class _KeyFinderScreenState extends State<KeyFinderScreen> {
+  String? filePath;
+  bool isPlaying = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,37 +28,7 @@ class KeyFinderScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                var status = await Permission.storage.request();
-                if (status.isGranted) {
-                  String? filePath = await FilePicker.platform
-                      .pickFiles(
-                        type: FileType.audio,
-                      )
-                      .then((value) => value?.files.single.path);
-
-                  if (filePath != null) {
-                    print('Caminho do arquivo selecionado: $filePath');
-                  } else {
-                    print('Nenhum arquivo selecionado');
-                  }
-                } else if (status.isPermanentlyDenied) {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Permissão negada'),
-                        content: Text(
-                            'A permissão de leitura do armazenamento externo é necessária para importar arquivos. Por favor, conceda a permissão manualmente nas configurações do dispositivo.'),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.of(context).pop(),
-                            child: Text('OK'),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
+                await _pickFile();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 136, 71, 227),
@@ -75,6 +53,11 @@ class KeyFinderScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
+            if (filePath != null)
+              Text(
+                'Arquivo Selecionado: $filePath',
+                style: TextStyle(color: Colors.black),
+              ),
             SizedBox(
               width: 250,
               child: Container(
@@ -120,11 +103,13 @@ class KeyFinderScreen extends StatelessWidget {
                       },
                     ),
                     CircleIconButton(
-                      icon: Icons.play_arrow,
+                      icon: isPlaying ? Icons.pause : Icons.play_arrow,
                       onPressed: () {
+                        setState(() {
+                          isPlaying = !isPlaying;
+                        });
                         // Lógica para tocar/pausar áudio
                       },
-
                       iconSize: 55, // Altera a cor do botão de play para branco
                     ),
                     CircleIconButton(
@@ -143,5 +128,30 @@ class KeyFinderScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _pickFile() async {
+    var storagePermissionStatus = await Permission.storage.status;
+    if (storagePermissionStatus.isGranted) {
+      String? pickedFilePath = await FilePicker.platform.pickFiles(
+        type: FileType.audio,
+      ).then((value) => value?.files.single.path);
+
+      if (pickedFilePath != null) {
+        setState(() {
+          filePath = pickedFilePath;
+        });
+        print('Caminho do arquivo selecionado: $filePath');
+      } else {
+        print('Nenhum arquivo selecionado');
+      }
+    } else {
+      var storagePermissionResult = await Permission.storage.request();
+      if (storagePermissionResult.isGranted) {
+        await _pickFile(); // Tentar selecionar o arquivo novamente após a concessão da permissão
+      } else {
+        print('Permissão de armazenamento não concedida');
+      }
+    }
   }
 }
