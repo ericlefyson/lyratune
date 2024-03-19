@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:lyratune/components/circle_icon_button.dart';
 
 @RoutePage()
@@ -134,29 +133,19 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
   }
 
   Future<void> _pickFile() async {
-    var storagePermissionStatus = await Permission.storage.status;
-    if (storagePermissionStatus.isGranted) {
-      String? pickedFilePath = await FilePicker.platform
-          .pickFiles(
-            type: FileType.audio,
-          )
-          .then((value) => value?.files.single.path);
+    String? pickedFilePath = await FilePicker.platform
+        .pickFiles(
+          type: FileType.audio,
+        )
+        .then((value) => value?.files.single.path);
 
-      if (pickedFilePath != null) {
-        setState(() {
-          filePath = pickedFilePath;
-        });
-        print('Caminho do arquivo selecionado: $filePath');
-      } else {
-        print('Nenhum arquivo selecionado');
-      }
+    if (pickedFilePath != null) {
+      setState(() {
+        filePath = pickedFilePath;
+      });
+      print('Caminho do arquivo selecionado: $filePath');
     } else {
-      var storagePermissionResult = await Permission.storage.request();
-      if (storagePermissionResult.isGranted) {
-        await _pickFile(); // Tentar selecionar o arquivo novamente após a concessão da permissão
-      } else {
-        print('Permissão de armazenamento não concedida');
-      }
+      print('Nenhum arquivo selecionado');
     }
   }
 }
