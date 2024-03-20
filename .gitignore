@@ -32,6 +32,14 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Android related
+android/.project
+android/.settings/
+android/app/.classpath
+android/app/.project
+android/app/.settings/
+android/key.properties
+
 # Web related
 lib/generated_plugin_registrant.dart
 

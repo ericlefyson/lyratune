@@ -40,6 +40,7 @@ dependencies:
   auto_route: ^7.8.4
 
 dev_dependencies:
+  flutter_native_splash: ^2.4.0
   flutter_test:
     sdk: flutter
 
@@ -56,9 +57,15 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+flutter_native_splash:
+  image: assets/splash.png
+  color: 9785FF
+  android_12:
+    image: assets/images/logo-lyratune-white.png
 flutter:
   assets:
     - assets/images/
+    - assets/splash.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
