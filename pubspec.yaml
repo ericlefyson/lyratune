@@ -41,6 +41,7 @@ dependencies:
 
 dev_dependencies:
   flutter_native_splash: ^2.4.0
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
 
@@ -62,6 +63,12 @@ flutter_native_splash:
   color: 9785FF
   android_12:
     image: assets/images/logo-lyratune-white.png
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon-lyratune.png"
+  adaptive_icon_background: "#9785FF"
+  adaptive_icon_foreground: "assets/images/adaptive-icon-lyratune.png"
 flutter:
   assets:
     - assets/images/
