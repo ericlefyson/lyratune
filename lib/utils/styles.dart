@@ -37,6 +37,7 @@ class AppBorderRadius {
 class AppImages {
   // General Images
   static const String moon = 'assets/images/moon.png';
+  static const String logos3 = 'assets/images/logos3.png';
 }
 
 class AppIcons {}
