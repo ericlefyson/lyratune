@@ -20,6 +20,7 @@ class HomeBottomNavigatorScreen extends StatelessWidget {
         ),
       ),
       child: AutoTabsScaffold(
+        extendBody: true,
         backgroundColor: Colors.transparent,
         routes: const [
           app_router.HomeRoute(),

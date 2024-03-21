@@ -21,6 +21,7 @@ class AppColors {
   static const Color white = Color.fromRGBO(255, 255, 255, 1);
   static const Color yellow = Color.fromRGBO(237, 255, 133, 1);
   static const Color error = Color.fromRGBO(239, 116, 116, 1);
+  static const Color success = Color.fromRGBO(0, 255, 0, 1);
 }
 
 class AppSpacing {
@@ -57,6 +58,7 @@ class AppTheme {
     outline: AppColors.darkBlue.withOpacity(0.30),
     surface: AppColors.darkBlue.withOpacity(0.10),
     error: AppColors.error,
+  
   );
 
   static final TextTheme _textTheme = base.textTheme.copyWith(
