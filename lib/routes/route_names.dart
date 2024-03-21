@@ -6,5 +6,4 @@ class HomeRouteNames {
   static const cypher = 'cypher';
   static const settings = '/settings';
   static const chordLibrary = 'chord-library';
-
 }
