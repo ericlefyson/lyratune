@@ -1,15 +1,19 @@
-// ignore_for_file: avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
 import 'package:lyratune/routes/app_router.dart';
 import 'package:lyratune/utils/styles.dart';
+import 'package:lyratune/stores/tuner_store.dart';
+import 'package:provider/provider.dart';
 
 final _appRouter = AppRouter(
 
     // webViewGuard: WebViewGuard(),
     );
 void main() {
-  runApp(const LyraTune());
+  final tunerStore = TunerStore();
+  runApp(Provider<TunerStore>(
+    create: (context) => tunerStore,
+    child: const LyraTune(),
+  ));
 }
 
 class LyraTune extends StatefulWidget {

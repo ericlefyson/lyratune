@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:lyratune/constants.dart';
 import 'package:lyratune/utils/styles.dart';
 
 class BottomNavigator extends StatefulWidget {
@@ -13,43 +12,43 @@ class BottomNavigator extends StatefulWidget {
 
 class _BottomNavigatorState extends State<BottomNavigator>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _animation;
-  double _scale = 4.4;
+  // late AnimationController _animationController;
+  // late Animation<double> _animation;
+  // double _scale = 4.4;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 350),
-    );
-    _animation =
-        Tween<double>(begin: 4, end: _scale).animate(_animationController);
-    _animationController.forward();
+    // _animationController = AnimationController(
+    //   vsync: this,
+    //   duration: const Duration(milliseconds: 350),
+    // );
+    // _animation =
+    //     Tween<double>(begin: 4, end: _scale).animate(_animationController);
+    // _animationController.forward();
 
-    widget.tabsRouter.addListener(() {
-      if (widget.tabsRouter.activeIndex == BottomNavigatorPage.home) {
-        setState(() {
-          _scale = 4.4;
-        });
-      } else if (widget.tabsRouter.activeIndex ==
-          BottomNavigatorPage.keyFinder) {
-        setState(() {
-          _scale = 6;
-        });
-      }
-      _animation = Tween<double>(begin: _animation.value, end: _scale)
-          .animate(_animationController);
-      _animationController.reset();
-      _animationController.forward();
-    });
+    // widget.tabsRouter.addListener(() {
+    //   if (widget.tabsRouter.activeIndex == BottomNavigatorPage.home) {
+    //     setState(() {
+    //       _scale = 4.4;
+    //     });
+    //   } else if (widget.tabsRouter.activeIndex ==
+    //       BottomNavigatorPage.keyFinder) {
+    //     setState(() {
+    //       _scale = 6;
+    //     });
+    //   }
+    //   _animation = Tween<double>(begin: _animation.value, end: _scale)
+    //       .animate(_animationController);
+    //   _animationController.reset();
+    //   _animationController.forward();
+    // });
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
-    widget.tabsRouter.removeListener(() {});
+    // _animationController.dispose();
+    // widget.tabsRouter.removeListener(() {});
     super.dispose();
   }
 
@@ -61,24 +60,20 @@ class _BottomNavigatorState extends State<BottomNavigator>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(
-          bottom: 20,
-          right: 0,
-          left: 0,
-          top: 0,
-          child: AnimatedBuilder(
-              animation: _animation,
-              builder: (context, child) {
-                return Transform.scale(
-                    scale: _animation.value,
-                    child: Image.asset(
-                      width: 0,
-                      height: 0,
-                      AppImages.moon,
-                      fit: BoxFit.scaleDown,
-                    ));
-              }),
-        ),
+        // Positioned(
+        //   bottom: 20,
+        //   right: 0,
+        //   left: 0,
+        //   top: 0,
+        //   child: Transform.scale(
+        //       scale: 4.4,
+        //       child: Image.asset(
+        //         width: 0,
+        //         height: 0,
+        //         AppImages.moon,
+        //         fit: BoxFit.scaleDown,
+        //       )),
+        // ),
         Padding(
           padding: const EdgeInsets.only(
               bottom: AppSpacing.defaultSpacing * 3,
