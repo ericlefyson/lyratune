@@ -28,6 +28,8 @@ class AudioList extends StatelessWidget {
 }
 
 class AddAudioButton extends StatelessWidget {
+  const AddAudioButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,14 +61,14 @@ class AddAudioButton extends StatelessWidget {
 class AudioButton extends StatelessWidget {
   final int index;
 
-  AudioButton({required this.index});
+  const AudioButton({required this.index});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 160.0,
       height: 50.0,
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: AppColors.lightestPurple,
         borderRadius: BorderRadius.circular(20.0),

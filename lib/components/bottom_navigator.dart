@@ -85,12 +85,12 @@ class _BottomNavigatorState extends State<BottomNavigator>
             ),
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(54)),
-              color: Colors.white,
+              color: Color.fromRGBO(90, 68, 104, 0.5),
               boxShadow: [
                 BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.05),
+                  color: Color.fromRGBO(90, 68, 104, 0.6),
                   spreadRadius: 0,
-                  blurRadius: 15,
+                  blurRadius: 30,
                 ),
               ],
             ),
@@ -101,22 +101,118 @@ class _BottomNavigatorState extends State<BottomNavigator>
                 backgroundColor: Colors.transparent,
                 unselectedItemColor: AppColors.textBody,
                 selectedItemColor: AppColors.primary,
-                items: const <BottomNavigationBarItem>[
+                selectedFontSize: 0, // Remove padding for selected item
+                unselectedFontSize: 0, // Remove padding for unselected items
+                items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home_outlined),
-                    label: 'Home',
+                    icon: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 0,
+                      ), // Adjust padding as needed
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: widget.tabsRouter.activeIndex == 0
+                                ? const Color.fromRGBO(221, 176, 254, 1)
+                                : Colors
+                                    .white, // Border color for unselected state
+                            width: 6, // Adjust border width as needed
+                          ),
+                          color: widget.tabsRouter.activeIndex == 0
+                              ? const Color.fromRGBO(221, 176, 254, 1)
+                              : Colors.white // Background color
+                          ),
+                      child: Icon(
+                        Icons.home,
+                        color: widget.tabsRouter.activeIndex == 0
+                            ? Colors.white
+                            : const Color.fromRGBO(
+                                221, 176, 254, 1), // Icon color
+                        size: 26, // Icon size
+                      ),
+                    ),
+                    label: '', // Empty label
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.music_note_outlined),
-                    label: 'KeyFinder',
+                    icon: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0), // Adjust padding as needed
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: widget.tabsRouter.activeIndex == 1
+                              ? const Color.fromRGBO(221, 176, 254, 1)
+                              : Colors.white, // Border color
+                          width: 6, // Adjust border width as needed
+                        ),
+                        color: widget.tabsRouter.activeIndex == 1
+                            ? const Color.fromRGBO(221, 176, 254, 1)
+                            : Colors.white, // Background color
+                      ),
+                      child: Icon(
+                        Icons.music_note,
+                        color: widget.tabsRouter.activeIndex == 1
+                            ? Colors.white
+                            : const Color.fromRGBO(
+                                221, 176, 254, 1), // Icon color
+                        size: 26, // Icon size
+                      ),
+                    ),
+                    label: '', // Empty label
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.settings_outlined),
-                    label: 'Cifralizador',
+                    icon: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0), // Adjust padding as needed
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: widget.tabsRouter.activeIndex == 2
+                              ? const Color.fromRGBO(221, 176, 254, 1)
+                              : Colors.white, // Border color
+                          width: 6, // Adjust border width as needed
+                        ),
+                        color: widget.tabsRouter.activeIndex == 2
+                            ? const Color.fromRGBO(221, 176, 254, 1)
+                            : Colors.white, // Background color
+                      ),
+                      child: Icon(
+                        Icons.star_half_outlined,
+                        color: widget.tabsRouter.activeIndex == 2
+                            ? Colors.white
+                            : const Color.fromRGBO(
+                                221, 176, 254, 1), // Icon color
+                        size: 26, // Icon size
+                      ),
+                    ),
+                    label: '', // Empty label
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.book),
-                    label: 'Livraria de Acordes',
+                    icon: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0), // Adjust padding as needed
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: widget.tabsRouter.activeIndex == 3
+                              ? const Color.fromRGBO(221, 176, 254, 1)
+                              : Colors.white, // Border color
+                          width: 6, // Adjust border width as needed
+                        ),
+                        color: widget.tabsRouter.activeIndex == 3
+                            ? const Color.fromRGBO(221, 176, 254, 1)
+                            : Colors.white, // Background color
+                      ),
+                      child: Icon(
+                        Icons.hotel_class_outlined,
+                        color: widget.tabsRouter.activeIndex == 3
+                            ? Colors.white
+                            : const Color.fromRGBO(
+                                221, 176, 254, 1), // Icon color
+                        size: 26, // Icon size
+                      ),
+                    ),
+                    label: '', // Empty label
                   ),
                 ],
                 currentIndex: widget.tabsRouter.activeIndex,

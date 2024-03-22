@@ -26,12 +26,12 @@ class _NoteDisplayState extends State<NoteDisplay> {
                   Center(
                     child: status == TuningStatus.undefined
                         ? const SizedBox(
-                            height: 80,
-                            width: 80,
+                            height: 40,
+                            width: 40,
                           )
                         : Container(
-                            height: 80,
-                            width: 80,
+                            height: 40,
+                            width: 40,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
                                 color: status == TuningStatus.tuned
@@ -51,7 +51,7 @@ class _NoteDisplayState extends State<NoteDisplay> {
                                 style: const TextStyle(
                                     color: Colors.white,
                                     // context.read<HomeBloc>().status =="TuningStatus.tuned"?Colors.green: Colors.red,
-                                    fontSize: 60.0,
+                                    fontSize: 30.0,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -59,7 +59,7 @@ class _NoteDisplayState extends State<NoteDisplay> {
                   ),
                 ])
           : const SizedBox(
-              height: 80,
+              height: 40,
             );
     });
   }

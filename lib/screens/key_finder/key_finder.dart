@@ -27,11 +27,10 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
 
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: AppBar(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            alignment: Alignment(0, 1.5),
+            alignment: Alignment(0, 1.6),
             image: AssetImage(AppImages.moon),
             fit: BoxFit.contain,
           ),
@@ -153,7 +152,7 @@ class _KeyFinderScreenState extends State<KeyFinderScreen> {
                 ),
               ),
               const SizedBox(
-                height: AppSpacing.defaultSpacing * 10,
+                height: AppSpacing.defaultSpacing ,
               )
             ],
           ),
